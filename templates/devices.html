@@ -1,0 +1,7 @@
+<div id="devices">
+  <div>
+    Device Name (model) - Serial {% for device in devices %}
+    <div>{{device.name}} ({{device.model}}) - {{device.serial}}</div>
+    {% endfor %}
+  </div>
+</div>

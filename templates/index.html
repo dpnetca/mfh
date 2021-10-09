@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/htmx.org@1.6.0"
+      integrity="sha384-G4dtlRlMBrk5fEiRXDsLjriPo8Qk5ZeHVVxS8KhX6D7I9XXJlNqbdvRlp9/glk5D"
+      crossorigin="anonymous"
+    ></script>
+    <title>Meraki Flask HTMX (MFH)</title>
+  </head>
+  <body>
+    <p>
+      Simple test site using Meraki API's on the Cisco DevNet Sandbox, a Flask
+      backend with HTMX to dynamically build the page
+    </p>
+    <div id="orgs">
+      <label>Organizations: </label>
+      <select
+        name="org_id"
+        hx-post="/networks"
+        hx-target="#networks"
+        hx-swap="outterHTML"
+      >
+        <option disabled selected>-- select an option --</option>
+        {% for org in orgs %}
+        <option value="{{org['id']}}">{{org.name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div id="networks"></div>
+  </body>
+</html>
